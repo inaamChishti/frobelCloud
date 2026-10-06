@@ -21108,6 +21108,17 @@ public function openTestSubmissionTrackerPage(Request $request)
 
     // ─────────────────────────────────────────────────────────────────────────
     // Helper: derive correct School Year from a DOB string (Y-m-d or d/m/Y)
+    // ─────────────────────────────────────────────────────────────────────────
+    // Public route handler for GET /get-year-from-dob?dob=YYYY-MM-DD
+    // Returns JSON: { year: '7' } or { year: null }
+    // ─────────────────────────────────────────────────────────────────────────
+    public function getYearFromDob(Request $request)
+    {
+        $dob = $request->input('dob');
+        $year = $this->getYearInSchoolFromDob($dob);
+        return response()->json(['year' => $year]);
+    }
+
     // Returns: '1'–'13', 'Reception', 'Adult', or null (invalid/too young DOB)
     // ─────────────────────────────────────────────────────────────────────────
     private function getYearInSchoolFromDob(?string $dob): ?string

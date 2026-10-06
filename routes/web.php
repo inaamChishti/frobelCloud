@@ -534,6 +534,7 @@ Route::middleware(['auth', 'checkLoginSession'])->group(function () {
     Route::get('/exportAtten', [App\Http\Controllers\BranchController::class, 'exportAtten'])->name('exportAtten');
     Route::get('/exportAttenView', [App\Http\Controllers\BranchController::class, 'exportAttenView'])->name('exportAttenView');
 
+    Route::get('/get-year-from-dob', [App\Http\Controllers\BranchController::class, 'getYearFromDob'])->name('get.year.from.dob');
 
     Route::get('/admin/attendance/edit/{id}', [App\Http\Controllers\BranchController::class, 'attendanceEdit'])->name('attendanceEdit');
     Route::get('subject-book-assigner', [App\Http\Controllers\BranchController::class, 'subjecBookAssigner'])->name('subjecBookAssigner');
